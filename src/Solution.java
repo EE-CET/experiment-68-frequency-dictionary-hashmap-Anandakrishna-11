@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -6,16 +6,23 @@ public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        // TODO: Read a single line of text
+        String line = scanner.nextLine();
+        String[] words = line.split(" ");
         
-        // TODO: Split the text into individual words
+        LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
         
-        // TODO: Create a HashMap to store the frequency of each word
+        for (String word : words) {
+            if (map.containsKey(word)) {
+                map.put(word, map.get(word) + 1);
+            } else {
+                map.put(word, 1);
+            }
+        }
         
-        // TODO: Iterate through the words and update their frequencies in the map
-        
-        // TODO: Iterate through the map and print the unique words and their counts
-        // Format: "word: count"
-        
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+        scanner.close();
     }
 }
